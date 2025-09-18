@@ -8,25 +8,25 @@ FINISH_OFFSET = 50
 FINISH_X = WIN_WIDTH - FINISH_OFFSET
 FPS = 30
 
-IMAGE_HORSE_1 = "horse.gif"
+IMAGE_HORSE_1 = "horse1.gif"
 IMAGE_HORSE_2 = "horse2.gif"
 
 class Horse:
     def __init__(self, speed: int, y: int, image: graphics.Image, window: graphics.GraphWin):
-        self.x = START_X
-        self.y = y
+        self.x_pos = START_X
+        self.y_pos = y
         self.image = image
         self.window = window
         self.dice = Dice(speed)
 
     def move(self) -> None:
-        self.x += self.dice.roll()
+        self.x_pos += self.dice.roll()
 
     def draw(self) -> None:
-        self.image.draw_at_pos(self.window, self.x, self.y)
+        self.image.draw_at_pos(self.window, self.x_pos, self.y_pos)
 
     def crossed_finish_line(self, x: int) -> bool:
-        return self.x >= x
+        return self.x_pos >= x
 
 def load_image_or_placeholder(filename: str) -> graphics.Image:
     try:
@@ -93,4 +93,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
